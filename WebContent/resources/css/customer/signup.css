@@ -1,0 +1,56 @@
+@CHARSET "UTF-8";
+#content{
+    grid-column-start: 2;
+    grid-column-end: 5;
+}
+
+/* content */
+#item_2{
+    grid-column-start: 1;
+    grid-column-end: 5;
+}
+#item_4{
+    grid-column-start: 1;
+    grid-column-end: 5;
+}
+#item_6{
+    grid-column-start: 1;
+    grid-column-end: 5;
+}
+#item_8{
+    grid-column-start: 1;
+    grid-column-end: 5;
+}
+#item_10{
+    grid-column-start: 1;
+    grid-column-end: 5;
+}
+#item_12{
+    grid-column-start: 1;
+    grid-column-end: 5;
+}
+#item_14{
+    grid-column-start: 1;
+    grid-column-end: 5;
+}
+#item_16{
+    grid-column-start: 1;
+    grid-column-end: 5;
+}
+
+#confirm_btn{
+    grid-column-start: 1;
+    grid-column-end: 3;
+}
+#cancel_btn{
+    grid-column-start: 3;
+    grid-column-end: 5;
+}
+#form div{
+  border-radius: 5px;
+  background-color: white;
+  padding: 10px;
+}
+.input-group-addon, .input-group-btn {
+    width: 15%;
+ }
