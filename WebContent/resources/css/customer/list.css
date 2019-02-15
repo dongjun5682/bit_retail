@@ -7,13 +7,18 @@
     grid-column-start: 1;
     grid-column-end: 2;
 }
+#header{
+    grid-column-start: 1;
+    grid-column-end: 7;
+    text-align: center;
+}
 #content{
     grid-column-start: 2;
     grid-column-end: 7;
     font-size: 15px;
 }
 #footer{
-    grid-column-start: 2;
+    grid-column-start: 1;
     grid-column-end: 7;
 }
 #cust_tab {

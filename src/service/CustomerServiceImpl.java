@@ -42,7 +42,6 @@ public class CustomerServiceImpl implements CustomerService {
 
 	@Override
 	public CustomerDTO retrieveCustomer(CustomerDTO cus) {
-		// TODO Auto-generated method stub
 		return dao.selectCustomer(cus);
 	}
 

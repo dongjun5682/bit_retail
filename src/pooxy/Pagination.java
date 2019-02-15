@@ -8,7 +8,7 @@ public class Pagination implements Proxy{
 	private int pageNum,pageSize,
 			blockSize,
 			startRow,endRow,
-			startPage,endPage,
+			startPage,endPage,blockNum,
 			prevBlock,nextBlock,totalCount;
 	private boolean existPrev, existNext;
 	
@@ -22,17 +22,18 @@ public class Pagination implements Proxy{
 		pageNum = (request.getParameter("page_num") == null) ? 1 : Integer.parseInt(request.getParameter("page_num"));
 		totalCount = CustomerServiceImpl.getInstance().countCustomers(null);
 		int pageCount = (totalCount % pageSize != 0) ?  totalCount/pageSize+1:totalCount/pageSize;
-		System.out.println("전체 페이지수: "+pageCount);
+		String _blockSize = request.getParameter("block_size");
+		blockSize = (_blockSize == null) ? 5 : Integer.parseInt(_blockSize);
 		startRow = (pageNum -1) *pageSize + 1;
-		System.out.println("스타트로우: "+startRow);
 		endRow = (totalCount > pageNum * pageSize)? pageNum * pageSize: totalCount;
-		System.out.println("엔드로우: "+endRow);
 		
-		startPage = pageNum - (pageNum-1);
-		endPage = blockSize;
+		blockNum = (int)(Math.ceil(pageNum / (double)blockSize) * blockSize);
+		endPage = blockNum;
+		startPage = (endPage - blockSize) + 1; 
+		endPage = (blockNum > pageCount ) ? pageCount :blockNum ;
 		
-		existNext = (startPage + pageSize) <= pageCount;
-		existPrev = (startPage -pageSize) > 0 ;
+		existNext = (startPage + pageSize) < pageCount;
+		existPrev = (startPage - pageSize) > 0 ;
 		
 		prevBlock = startPage - pageSize;
 		nextBlock = startPage + pageSize;

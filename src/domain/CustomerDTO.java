@@ -11,6 +11,5 @@ public @Data class CustomerDTO {
 					city,
 					address,
 					postalCode,
-					rnum
-					;
+					rnum;
 }

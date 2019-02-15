@@ -24,6 +24,7 @@ public class CustomerController extends HttpServlet {
 		System.out.println("------1-------");
 		Receiver.init(request, response);
 		Carrier.forward(request, response);
+		
 	}
 }
 

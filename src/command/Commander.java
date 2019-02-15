@@ -36,6 +36,8 @@ public class Commander {
 		case CUSTOMER_LIST:
 			cmd = new ListCommand(pxy);
 			break;
+		case CUST_RETRIEVE:
+			cmd = new RetrieveCommand(pxy);
 		default:
 			break;
 		}
