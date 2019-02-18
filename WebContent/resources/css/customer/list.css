@@ -21,6 +21,11 @@
     grid-column-start: 1;
     grid-column-end: 7;
 }
+#modify{
+	grid-column-start: 1;
+	grid-column-end: 2;
+	
+}
 #cust_tab {
   font-family: arial, sans-serif;
   border-collapse: collapse;

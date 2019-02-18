@@ -162,7 +162,25 @@ public class CustomerDAOImpl implements CustomerDAO {
 
 	@Override
 	public void updateCustomer(CustomerDTO cus) {
-		// TODO Auto-generated method stub
+		try {
+			PreparedStatement pstmt = DatabaseFactory
+			.createDatabase(Vender.ORACLE)
+			.getConnection()
+			.prepareStatement("UPDATE CUSTOMERS SET PHONE=?, CITY=?,ADDRESS=?,POSTAL_CODE=?,PASSWORD=? WHERE CUSTOMER_ID LIKE ?");
+			pstmt.setString(1,cus.getPhone());
+			pstmt.setString(2,cus.getCity());
+			pstmt.setString(3,cus.getAddress());
+			pstmt.setString(4,cus.getPostalCode());
+			pstmt.setString(5,cus.getPassword());
+			pstmt.setString(6,cus.getCustomerId());
+			int rs = pstmt.executeUpdate();
+			if(rs == 1){
+				System.out.println("변경 성공!!!!");
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 
 	}
 

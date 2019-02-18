@@ -17,6 +17,7 @@ public class RetrieveCommand extends Command{
 		HttpServletRequest request = req.getRequest();
 		CustomerDTO cus = new CustomerDTO();
 		cus.setCustomerId(request.getParameter("customer_Id"));
+		System.out.println("ID : "+ request.getParameter("customer_Id"));
 		cus = CustomerServiceImpl.getInstance().retrieveCustomer(cus);
 		request.setAttribute("cus", cus);
 	}

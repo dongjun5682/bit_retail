@@ -7,7 +7,7 @@
 	<jsp:include page="../employee/nav.jsp"/>
 </div>
 <div class="grid-item" id="side_menu">
- 	<img src="resources/img/pascal.JPG"/>
+ 	<img src="${img}/default_img.jpg"/>
 </div>
 <div class="grid-item" id="content">
 [${cus.customerName}의 정보] <br /> 
@@ -20,4 +20,13 @@
 지번주소 : ${cus.city} <br />
 상세주소 : ${cus.address}<br />
 </div>		
+<div class="grid-item" id="modify">
+<button type="button" class="btn btn-success" id="detail_modify">수정</button>
+</div>
 <jsp:include page="../home/bottom.jsp"/>
+<script>
+$('#detail_modify').click(function(){
+	alert('수정버튼 클릭');
+	location.assign('${ctx}/customer.do?cmd=cust_retrieve&page=update&customer_Id=${cus.customerId}');
+});
+</script>
