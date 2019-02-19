@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <jsp:include page="../home/top.jsp"/>
-<link rel="stylesheet"href="${css}/customer/list.css" />
+<link rel="stylesheet"href="${css}/customer/update.css" />
 <div class="grid-item" id="nav">
 	<jsp:include page="../employee/nav.jsp"/>
 </div>
@@ -26,13 +26,13 @@
 <input type="hidden" name="cmd" value="cust_update" />
 <input type="hidden" name="page" value="detail" />
 </form>
-</div>		
+</div>	
 <div class="grid-item" id="modify">
-<button type="button" class="btn btn-success" id="confirm_btn">확인</button>
-<button type="button" class="btn btn-danger" id="cancel_btn">취소</button>
-
+	<button type="button" class="btn btn-success" id="confirm_btn">확인</button>
 </div>
-
+<div class="grid-item" id="cancel">
+	<button type="button" class="btn btn-danger" id="cancel_btn">취소</button>
+</div>
 <jsp:include page="../home/bottom.jsp"/>
 <script>
 $('#confirm_btn').click(function(){

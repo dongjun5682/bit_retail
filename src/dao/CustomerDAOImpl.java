@@ -11,9 +11,12 @@ import java.util.List;
 import java.util.Map;
 
 import domain.CustomerDTO;
+import domain.ImageDTO;
 import enums.CustomerSQL;
 import enums.Vender;
 import factory.DatabaseFactory;
+import lombok.Data;
+import pooxy.ImageProxy;
 import pooxy.PageProxy;
 import pooxy.Pagination;
 import pooxy.Proxy;
@@ -21,8 +24,9 @@ import pooxy.Proxy;
 public class CustomerDAOImpl implements CustomerDAO {
 
 	private static CustomerDAOImpl instance = new CustomerDAOImpl();
-
+	Connection conn;
 	private CustomerDAOImpl() {
+		conn = DatabaseFactory.createDatabase(Vender.ORACLE).getConnection();
 	}
 
 	public static CustomerDAOImpl getInstance() {
@@ -214,6 +218,26 @@ public class CustomerDAOImpl implements CustomerDAO {
 			e.printStackTrace();
 		}
 		return map;
+	}
+
+	@Override
+	public CustomerDTO selectProfile(Proxy pxy) {
+		CustomerDTO cust = new CustomerDTO();
+		try {
+			
+			ImageDAOImpl.getInstance().insertImage(((ImageProxy)pxy).getImg());
+			String imgSeq = ImageDAOImpl.getInstance().lastImageSeq();
+			
+			String sql = "UPDATE CUSTOMERS SET PHOTO = ? WHERE CUSTOMER_ID LIKE ?";
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setString(1,imgSeq);
+			ps.setString(2,"CUST_ID");
+			ResultSet rs = ps.executeQuery();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return cust;
 	}
 
 }
