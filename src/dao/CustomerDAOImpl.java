@@ -122,6 +122,7 @@ public class CustomerDAOImpl implements CustomerDAO {
 				temp.setPostalCode(rs.getString("POSTAL_CODE"));
 				temp.setSsn(rs.getString("SSN"));
 				temp.setPhone(rs.getString("PHONE"));
+				temp.setPhoto(rs.getString("PHOTO"));
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -221,23 +222,28 @@ public class CustomerDAOImpl implements CustomerDAO {
 	}
 
 	@Override
-	public CustomerDTO selectProfile(Proxy pxy) {
+	public Map<String,Object> selectProfile(Proxy pxy) {
 		CustomerDTO cust = new CustomerDTO();
+		Map<String,Object> map = new HashMap<String, Object>();
+		ImageDTO img = new ImageDTO();
 		try {
-			
-			ImageDAOImpl.getInstance().insertImage(((ImageProxy)pxy).getImg());
+			ImageProxy ipxy = (ImageProxy)pxy;
+			ImageDAOImpl.getInstance().insertImage(ipxy.getImg());
 			String imgSeq = ImageDAOImpl.getInstance().lastImageSeq();
-			
-			String sql = "UPDATE CUSTOMERS SET PHOTO = ? WHERE CUSTOMER_ID LIKE ?";
-			PreparedStatement ps = conn.prepareStatement(sql);
-			ps.setString(1,imgSeq);
-			ps.setString(2,"CUST_ID");
-			ResultSet rs = ps.executeQuery();
+			PreparedStatement ps = conn.prepareStatement(CustomerSQL.UPDATE_PHOTO.toString());
+			ps.setString(1, imgSeq);
+			ps.setString(2, ipxy.getImg().getOwner());
+			ps.executeUpdate();
+			cust.setCustomerId(ipxy.getImg().getOwner());
+			cust = selectCustomer(cust);
+			img = ImageDAOImpl.getInstance().selectImage(ipxy.getImg());
+			map.put("cus",cust);
+			map.put("image",img);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return cust;
+		return map;
 	}
 
 }

@@ -18,12 +18,15 @@ public class RetrieveCommand extends Command{
 		RequestProxy req = (RequestProxy)pxy.get("req");
 		HttpServletRequest request = req.getRequest();
 		CustomerDTO cus = new CustomerDTO();
-		ImageDTO img = new ImageDTO();
+		
 		cus.setCustomerId(request.getParameter("customer_Id"));
 		System.out.println("ID : "+ request.getParameter("customer_Id"));
 		cus = CustomerServiceImpl.getInstance().retrieveCustomer(cus);
-		
+		System.out.println("CUST :: "+cus.getPhoto());
+	    ImageDTO img = new ImageDTO();
+		img = ImageServiceImpl.getInstance().searchImageSeq(cus);
+		System.out.println("img 객체의 값은 : "+ img);
 		request.setAttribute("cus", cus);
-		request.setAttribute("img", img);
+		request.setAttribute("image", img);
 	}
 }

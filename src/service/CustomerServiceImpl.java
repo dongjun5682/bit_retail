@@ -68,14 +68,12 @@ public class CustomerServiceImpl implements CustomerService {
 
 	@Override
 	public Map<String, Object> retrievePhone(Proxy pxy) {
-			
 		return dao.selectPhone(pxy);
 	}
 
 	@Override
-	public void fileUpload(Proxy pxy) {
-		dao.selectProfile(pxy);
-		
+	public Map<String,Object> fileUpload(Proxy pxy) {
+		return dao.selectProfile(pxy);
 	}
 
 }

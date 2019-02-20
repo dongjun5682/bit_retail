@@ -31,6 +31,7 @@ public class UpdateCommand extends Command {
 		cus.setPostalCode((postalCode.equals("")) ? cus.getPostalCode() : request.getParameter("postalCode"));
 		cus.setPassword((password.equals("")) ? cus.getPassword(): request.getParameter("password"));
 		CustomerServiceImpl.getInstance().modifyCustomer(cus);
+		
 		request.setAttribute("cus",cus);
 	}
 }

@@ -7,7 +7,7 @@
 	<jsp:include page="../employee/nav.jsp"/>
 </div>
 <div class="grid-item" id="side_menu">
- 	<img src="${img}/default_img.jpg"/>
+ 	<img src="${img}/${image.imgName}.${image.imgExtention}"/>
 </div>
 
 <div class="grid-item" id="content">

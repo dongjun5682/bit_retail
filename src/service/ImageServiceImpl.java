@@ -3,6 +3,7 @@ package service;
 import java.util.List;
 
 import dao.ImageDAOImpl;
+import domain.CustomerDTO;
 import domain.ImageDTO;
 import pooxy.Proxy;
 
@@ -53,6 +54,11 @@ public class ImageServiceImpl implements ImageService {
 	@Override
 	public void removeImage(ImageDTO img) {
 		dao.deleteImage(img);
+	}
+
+	@Override
+	public ImageDTO searchImageSeq(CustomerDTO cust) {
+		return dao.selectImageSeq(cust);
 	}
 
 }

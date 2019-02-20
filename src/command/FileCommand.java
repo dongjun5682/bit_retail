@@ -32,15 +32,9 @@ public class FileCommand extends Command {
 			System.out.println("파일커맨드 파일업로드 진입!!");
 			ImageProxy ipxy = new ImageProxy();
 			ipxy.carryOut(request);
-			ImageDTO image = ipxy.getImg();
-			String customerID = ipxy.getImg().getOwner();
-			System.out.println("아이디 :: " +ipxy.getImg().getOwner() );
-			CustomerDTO cust = new CustomerDTO();
-			cust.setCustomerId(customerID);
-			
-			cust = CustomerServiceImpl.getInstance().retrieveCustomer(cust);
-			request.setAttribute("image",image);
-			request.setAttribute("cus",cust);		
+		    Map<String,Object> map = CustomerServiceImpl.getInstance().fileUpload(ipxy);
+			request.setAttribute("image",map.get("image"));
+			request.setAttribute("cus", map.get("cus"));
 			break;
 		default:
 			break;

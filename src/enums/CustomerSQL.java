@@ -1,7 +1,7 @@
 package enums;
 
 public enum CustomerSQL {
-	SIGNUP,SIGNIN,LIST,COUNT,RETRIEVE;
+	SIGNUP,SIGNIN,LIST,COUNT,RETRIEVE,UPLOAD_FILE,UPDATE_PHOTO;
 	@Override
 	public String toString() {
 		StringBuffer query = new StringBuffer();
@@ -27,6 +27,8 @@ public enum CustomerSQL {
 		case RETRIEVE:
 			query.append("SELECT * FROM CUSTOMERS WHERE CUSTOMER_ID LIKE ?");
 			break;
+		case UPDATE_PHOTO:
+			query.append("UPDATE CUSTOMERS SET PHOTO = ? WHERE CUSTOMER_ID LIKE ?");
 		default:
 			break;
 		}
