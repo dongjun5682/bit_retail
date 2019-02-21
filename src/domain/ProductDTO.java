@@ -7,5 +7,6 @@ public @Data class ProductDTO {
 					supplierId,
 					categoryId,
 					unit,
-					price;
+					price,
+					photo;
 }

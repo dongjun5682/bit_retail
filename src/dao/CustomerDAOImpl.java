@@ -191,8 +191,18 @@ public class CustomerDAOImpl implements CustomerDAO {
 
 	@Override
 	public void deleteCustomer(CustomerDTO cus) {
-		// TODO Auto-generated method stub
-
+		
+		try {
+			PreparedStatement pstmt = conn.prepareStatement(CustomerSQL.REMOVE.toString());
+			pstmt.setString(1,cus.getCustomerId());
+			int rs = pstmt.executeUpdate();
+			if(rs == 1){
+				System.out.println("삭제 성공!!");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
 	}
 
 	@Override

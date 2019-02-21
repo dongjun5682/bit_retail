@@ -3,16 +3,17 @@ package dao;
 import java.util.List;
 
 import domain.ProductDTO;
+import pooxy.Proxy;
 
 public interface ProductDAO {
 
 	public void insertProduct(ProductDTO pro);
-	public List<ProductDTO> selectProductList();
-	public List<ProductDTO> selectProducts(String searchWord);
-	public ProductDTO selectProduct(String searchWord);
+	public List<ProductDTO> selectProductList(Proxy pxy);
+	public List<ProductDTO> selectProducts(Proxy pxy);
+	public ProductDTO selectProduct(ProductDTO pro);
 	
-	public int countProduct();
-	public boolean existProduct(String searchWord);
+	public int countProduct(Proxy pxy);
+	public boolean existProduct(ProductDTO pro);
 	
 	public void updateProduct(ProductDTO pro);
 	public void deleteProduct(ProductDTO pro);

@@ -5,6 +5,7 @@ import java.util.List;
 import dao.ProductDAO;
 import dao.ProductDAOImpl;
 import domain.ProductDTO;
+import pooxy.Proxy;
 
 public class ProductServiceImpl implements ProductService {
 
@@ -21,38 +22,35 @@ public class ProductServiceImpl implements ProductService {
 	
 	@Override
 	public void registProduct(ProductDTO pro) {
-		// TODO Auto-generated method stub
-		
+		dao.insertProduct(pro);
 	}
 
 	@Override
-	public List<ProductDTO> bringProductList() {
-		// TODO Auto-generated method stub
-		return dao.selectProductList();
+	public List<ProductDTO> bringProductList(Proxy pxy) {
+		return dao.selectProductList(pxy);
 	}
 
 	@Override
-	public List<ProductDTO> retrieveProducts(String searchWord) {
+	public List<ProductDTO> retrieveProducts(Proxy pxy) {
 		// TODO Auto-generated method stub
-		return dao.selectProducts(searchWord);
+		return dao.selectProducts(pxy);
 	}
 
 	@Override
-	public ProductDTO retrieveProduct(String searchWord) {
-		// TODO Auto-generated method stub
-		return dao.selectProduct(searchWord);
+	public ProductDTO retrieveProduct(ProductDTO pro) {
+		return dao.selectProduct(pro);
 	}
 
 	@Override
-	public int countProduct() {
+	public int countProduct(Proxy pxy) {
 		// TODO Auto-generated method stub
-		return dao.countProduct();
+		return dao.countProduct(pxy);
 	}
 
 	@Override
-	public boolean existProduct(String searchWord) {
+	public boolean existProduct(ProductDTO pro) {
 		// TODO Auto-generated method stub
-		return dao.existProduct(searchWord);
+		return dao.existProduct(pro);
 	}
 
 	@Override

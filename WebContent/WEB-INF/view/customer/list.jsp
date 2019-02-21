@@ -12,7 +12,6 @@
 </div>
 <div class="grid-item" id="content">
 
-
 <table class="table table-hover">
       <thead>
         <tr>

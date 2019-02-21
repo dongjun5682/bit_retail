@@ -8,7 +8,7 @@ public enum EmployeeSQL {
 		switch (this) {
 		case REGISTER:
 			query.append("INSERT INTO EMPLOYEES (EMPLOYEE_ID,MANAGER,NAME,BIRTH_DATE,PHOTO,NOTES)"
-            + "VALUES(EMP_SEQ.NEXTVAL, ?, ?, ?, ?, ?)");
+            + "VALUES(EMP_SEQ.NEXTVAL, ?, ?, ?,'1000', ?)");
 			break;
 		case TEST:
 			query.append("SELECT COUNT(*) AS COUNT FROM EMPLOYEES");

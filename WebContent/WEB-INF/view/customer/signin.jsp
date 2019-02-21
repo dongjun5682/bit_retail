@@ -12,13 +12,13 @@
   <div class="form-group">
     <small class="col-sm-2 control-label">UserID</small>
     <div class="col-sm-10">
-      <input type="text" class="form-control" id="customerId" name="customerId" placeholder="User Name">
+      <input type="text" class="form-control" id="customerId" name="customerId" placeholder="User Name" value="song">
     </div>
   </div>
   <div class="form-group">
     <small class="col-sm-2 control-label">Password</small>
     <div class="col-sm-10">
-      <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+      <input type="password" class="form-control" id="password" name="password" placeholder="Password" value="1234">
     </div>
   </div>
   <div class="form-group">

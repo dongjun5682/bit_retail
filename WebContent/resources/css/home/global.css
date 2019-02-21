@@ -27,11 +27,15 @@
     grid-column-end: 5;
 }
 #footer{
-    grid-column-start: 1;
+    grid-column-start:1;
     grid-column-end: 5;
     text-align: center;
 }
 .row{
-	    grid-column-start: 1;
+	grid-column-start:1;
+    grid-column-end: 5;
+}
+#cust_nav{
+	grid-column-start:1;
     grid-column-end: 5;
 }

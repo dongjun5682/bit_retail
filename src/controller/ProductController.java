@@ -7,13 +7,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import command.Carrier;
+import command.Receiver;
 import service.ProductService;
 import service.ProductServiceImpl;
 
 /**
  * Servlet implementation class ProductController
  */
-@WebServlet("/Product.do")
+@WebServlet("/product.do")
 public class ProductController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -21,7 +23,8 @@ public class ProductController extends HttpServlet {
 	
 	protected void service(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-
+		Receiver.init(request, response);
+		Carrier.forward(request, response);
 	}
 
 }

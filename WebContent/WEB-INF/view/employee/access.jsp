@@ -12,7 +12,7 @@
   <div class="form-group">
     <small class="col-sm-2 control-label">Employee_ID</small>
     <div class="col-sm-10">
-      <input type="text" class="form-control" id="empno" name="empno" placeholder="Employee_ID" value="1065">
+      <input type="text" class="form-control" id="empno" name="empno" placeholder="Employee_ID" value="1000">
     </div>
   </div>
   <div class="form-group">

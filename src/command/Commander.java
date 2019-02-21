@@ -45,6 +45,19 @@ public class Commander {
 			break;
 		case CUST_FILE_UPLOAD:
 			cmd = new FileCommand(pxy);
+			break;
+		case CUST_REMOVE:
+			cmd = new RemoveCommand(pxy);
+			break;
+		case PRO_REGISTER:
+			cmd = new CreateCommand(pxy);
+			break;
+		case PRO_LIST:
+			cmd = new ListCommand(pxy);
+			break;
+		case PRODUCT_RETRIEVE:
+			cmd = new RetrieveCommand(pxy);
+			break;
 		default:
 			break;
 		}

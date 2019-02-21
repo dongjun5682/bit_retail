@@ -8,6 +8,7 @@ import javax.servlet.http.HttpSession;
 
 import domain.CustomerDTO;
 import domain.EmployeeDTO;
+import domain.ImageDTO;
 import enums.Action;
 import pooxy.PageProxy;
 import pooxy.Pagination;
@@ -15,6 +16,7 @@ import pooxy.Proxy;
 import pooxy.RequestProxy;
 import service.CustomerServiceImpl;
 import service.EmployeeServiceImpl;
+import service.ImageServiceImpl;
 
 public class ExistCommand extends Command {
 	public ExistCommand(Map<String,Proxy> pxy) {
@@ -53,7 +55,10 @@ public class ExistCommand extends Command {
 			cus = CustomerServiceImpl.getInstance().retrieveCustomer(cus);
 			if(cus != null){
 				System.out.println("로그인 성공");
-				session.setAttribute("customer",cus);
+				ImageDTO img = new ImageDTO();
+				img = ImageServiceImpl.getInstance().searchImageSeq(cus);
+				request.setAttribute("image", img);
+				session.setAttribute("cus",cus);
 			}else{
 				System.out.println("로그인 실패");
 				super.setDomain("customer");

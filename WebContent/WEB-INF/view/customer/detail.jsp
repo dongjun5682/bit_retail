@@ -8,8 +8,8 @@
 </div>
 <div class="grid-item" id="side_menu">
  	<form id="file_form">
- 		<img src="${img}/${image.imgName}.${image.imgExtention}"/>	
- 		<input type="file" name="file_upload" />
+ 		<img id="detail_img" src="${img}/${image.imgName}.${image.imgExtention}"/>	
+ 		<input type="file" name="file_upload" id="file_upload"/>
  		<input type="submit" class="btn btn-success" id="file_upload_btn"/>
 <%--  		<input type="hidden" name="cmd" value="cust_file_upload"/>
  		<input type="hidden" name="page" value="detail" />
@@ -27,12 +27,17 @@
 지번주소 : ${cus.city} <br />
 상세주소 : ${cus.address}<br />
 </div>
-
 <div class="grid-item" id="modify">
 	<button type="button" class="btn btn-success" id="detail_modify">수정</button>
 </div>
+<div class="grid-item" id="reomve">
+	<button type="button" class="btn btn-danger" id="detail_remove">회원탈퇴</button>
+</div>
 <jsp:include page="../home/bottom.jsp"/>
 <script>
+$('#detail_remove').click(function(){
+	location.assign('${ctx}/customer.do?cmd=cust_remove&dir=home&page=main&customer_Id=${cus.customerId}');
+});
 $('#detail_modify').click(function(){
 	alert('수정버튼 클릭');
 	location.assign('${ctx}/customer.do?cmd=cust_retrieve&page=update&customer_Id=${cus.customerId}');

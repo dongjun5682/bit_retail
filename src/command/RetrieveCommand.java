@@ -6,10 +6,13 @@ import javax.servlet.http.HttpServletRequest;
 
 import domain.CustomerDTO;
 import domain.ImageDTO;
+import domain.ProductDTO;
+import enums.Action;
 import pooxy.Proxy;
 import pooxy.RequestProxy;
 import service.CustomerServiceImpl;
 import service.ImageServiceImpl;
+import service.ProductServiceImpl;
 
 public class RetrieveCommand extends Command{
 	
@@ -17,16 +20,26 @@ public class RetrieveCommand extends Command{
 		super(pxy);
 		RequestProxy req = (RequestProxy)pxy.get("req");
 		HttpServletRequest request = req.getRequest();
-		CustomerDTO cus = new CustomerDTO();
+		switch (Action.valueOf(request.getParameter("cmd").toUpperCase())) {
+		case CUST_RETRIEVE:
+			CustomerDTO cus = new CustomerDTO();
+			cus.setCustomerId(request.getParameter("customer_Id"));
+			cus = CustomerServiceImpl.getInstance().retrieveCustomer(cus);
+		    ImageDTO img = new ImageDTO();
+			img = ImageServiceImpl.getInstance().searchImageSeq(cus);
+			request.setAttribute("cus", cus);
+			request.setAttribute("image", img);
+			break;
+		case PRODUCT_RETRIEVE:
+			ProductDTO pro = new ProductDTO();
+			pro.setProductId(request.getParameter("product_Id"));
+			System.out.println("product_id : "+ request.getParameter("product_Id"));
+			pro = ProductServiceImpl.getInstance().retrieveProduct(pro);
+			request.setAttribute("pro",pro);
+			break;
+		default:
+			break;
+		}
 		
-		cus.setCustomerId(request.getParameter("customer_Id"));
-		System.out.println("ID : "+ request.getParameter("customer_Id"));
-		cus = CustomerServiceImpl.getInstance().retrieveCustomer(cus);
-		System.out.println("CUST :: "+cus.getPhoto());
-	    ImageDTO img = new ImageDTO();
-		img = ImageServiceImpl.getInstance().searchImageSeq(cus);
-		System.out.println("img 객체의 값은 : "+ img);
-		request.setAttribute("cus", cus);
-		request.setAttribute("image", img);
 	}
 }
