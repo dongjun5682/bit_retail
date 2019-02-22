@@ -66,3 +66,10 @@
 .pagination a:hover:not(.active) {
     background-color: #ddd;
 }
+#product_img{
+	width: 150px;
+	height: 150px;
+}
+#from{
+	margin: auto;
+}

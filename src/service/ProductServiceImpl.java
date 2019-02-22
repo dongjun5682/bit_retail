@@ -26,7 +26,7 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
-	public List<ProductDTO> bringProductList(Proxy pxy) {
+	public List<?> bringProductList(Proxy pxy) {
 		return dao.selectProductList(pxy);
 	}
 

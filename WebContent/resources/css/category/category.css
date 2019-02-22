@@ -5,7 +5,7 @@
 }
 #cust_nav{
 	grid-column-start:1;
-    grid-column-end: 5;
+    grid-column-end: 7;
     height:80px;
 }
 #profile_img{

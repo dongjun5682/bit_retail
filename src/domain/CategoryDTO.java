@@ -3,7 +3,7 @@ package domain;
 import lombok.Data;
 
 public @Data class CategoryDTO {
-	private String categoriId,
+	private String categoryId,
 					categoryName,
 					description;
 	

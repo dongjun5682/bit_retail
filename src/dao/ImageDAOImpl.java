@@ -74,12 +74,11 @@ public class ImageDAOImpl implements ImageDAO {
 		return image;
 	}
 	@Override
-	public ImageDTO selectImageSeq(CustomerDTO cust) {
+	public ImageDTO selectImageSeq(ImageDTO img) {
 		ImageDTO image = new ImageDTO();
 		try {
 			PreparedStatement ps = conn.prepareStatement("SELECT * FROM IMAGE WHERE IMG_SEQ LIKE ?");
-			System.out.println("PHOTO :: "+cust.getPhoto());
-			ps.setString(1,cust.getPhoto());
+			ps.setString(1,img.getImgSeq());
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
 				image.setImgName(rs.getString("IMG_NAME"));

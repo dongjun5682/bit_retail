@@ -68,5 +68,4 @@
 $('.page').click(function(){
 	location.assign('${ctx}/customer.do?cmd=customer_list&page=list&page_num='+$(this).text()+'&page_size=5');
 });
-
 </script>

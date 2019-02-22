@@ -3,15 +3,16 @@ package service;
 import java.util.List;
 
 import domain.CategoryDTO;
+import pooxy.Proxy;
 
 public interface CategoryService {
-	public void registCategory(CategoryDTO cat);
-	public List<CategoryDTO> bringCategoryList();
-	public List<CategoryDTO> retrieveCategorys(String searchWord);
-	public CategoryDTO retrieveCategory(String searchWord);
-	public int countCategorys();
-	public boolean existCategory(String searchWord);
-	public void modifyCategory(CategoryDTO cat);
-	public void removeCategory(CategoryDTO cat);
+	public void registCategory(CategoryDTO cate);
+	public List<?> bringCategoryList(Proxy pxy);
+	public List<CategoryDTO> retrieveCategorys(Proxy pxy);
+	public CategoryDTO retrieveCategory(CategoryDTO cate);
+	public int countCategorys(Proxy pxy);
+	public boolean existCategory(Proxy pxy);
+	public void modifyCategory(CategoryDTO cate);
+	public void removeCategory(CategoryDTO cate);
 	
 }

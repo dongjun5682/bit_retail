@@ -3,18 +3,19 @@ package dao;
 import java.util.List;
 
 import domain.CategoryDTO;
+import pooxy.Proxy;
 
 public interface CategoryDAO {
 	
-	public void insertCategory(CategoryDTO cat);
-	public List<CategoryDTO> selectCategoryList();
-	public List<CategoryDTO> selectCategorys(String searchWord);
-	public CategoryDTO selectCategory(String searchWord);
+	public void insertCategory(CategoryDTO cate);
+	public List<CategoryDTO> selectCategoryList(Proxy pxy);
+	public List<CategoryDTO> selectCategorys(Proxy pxy);
+	public CategoryDTO selectCategory(CategoryDTO cate);
 	
-	public int countCategorys();
-	public boolean existCategory(String searchWord);
+	public int countCategorys(Proxy pxy);
+	public boolean existCategory(Proxy pxy);
 	
-	public void updateCategory(CategoryDTO cat);
-	public void deleteCategory(CategoryDTO cat);
+	public void updateCategory(CategoryDTO cate);
+	public void deleteCategory(CategoryDTO cate);
 	
 }

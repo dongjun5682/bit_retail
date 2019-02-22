@@ -56,7 +56,8 @@ public class ExistCommand extends Command {
 			if(cus != null){
 				System.out.println("로그인 성공");
 				ImageDTO img = new ImageDTO();
-				img = ImageServiceImpl.getInstance().searchImageSeq(cus);
+				img.setImgSeq(cus.getPhoto());
+				img = ImageServiceImpl.getInstance().searchImageSeq(img);
 				request.setAttribute("image", img);
 				session.setAttribute("cus",cus);
 			}else{

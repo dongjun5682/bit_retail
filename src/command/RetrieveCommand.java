@@ -20,22 +20,29 @@ public class RetrieveCommand extends Command{
 		super(pxy);
 		RequestProxy req = (RequestProxy)pxy.get("req");
 		HttpServletRequest request = req.getRequest();
+	    ImageDTO img = null;
 		switch (Action.valueOf(request.getParameter("cmd").toUpperCase())) {
 		case CUST_RETRIEVE:
 			CustomerDTO cus = new CustomerDTO();
 			cus.setCustomerId(request.getParameter("customer_Id"));
 			cus = CustomerServiceImpl.getInstance().retrieveCustomer(cus);
-		    ImageDTO img = new ImageDTO();
-			img = ImageServiceImpl.getInstance().searchImageSeq(cus);
+			img = new ImageDTO();
+			img.setImgSeq(cus.getPhoto());
+			img = ImageServiceImpl.getInstance().searchImageSeq(img);
 			request.setAttribute("cus", cus);
 			request.setAttribute("image", img);
 			break;
 		case PRODUCT_RETRIEVE:
 			ProductDTO pro = new ProductDTO();
 			pro.setProductId(request.getParameter("product_Id"));
-			System.out.println("product_id : "+ request.getParameter("product_Id"));
 			pro = ProductServiceImpl.getInstance().retrieveProduct(pro);
+			img = new ImageDTO();
+			img.setImgSeq(pro.getPhoto());
+			img = ImageServiceImpl.getInstance().searchImageSeq(img);
 			request.setAttribute("pro",pro);
+			request.setAttribute("image", img);
+			break;
+		case CATEGORY_RETRIEVEL:
 			break;
 		default:
 			break;

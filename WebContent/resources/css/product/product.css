@@ -1,5 +1,6 @@
 @CHARSET "UTF-8";
-#content{
-	grid-column-start:1;
-    grid-column-end: 5;
+#pro_nav{
+   grid-column-start: 1;
+    grid-column-end: 7;
+	
 }

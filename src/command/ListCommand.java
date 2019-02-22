@@ -1,9 +1,12 @@
 package command;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+
+import domain.CategoryDTO;
 import domain.CustomerDTO;
 import domain.ImageDTO;
 import domain.ProductDTO;
@@ -12,6 +15,7 @@ import pooxy.PageProxy;
 import pooxy.Pagination;
 import pooxy.Proxy;
 import pooxy.RequestProxy;
+import service.CategoryServiceImpl;
 import service.CustomerServiceImpl;
 import service.ImageServiceImpl;
 import service.ProductServiceImpl;
@@ -26,16 +30,22 @@ public class ListCommand extends Command {
 		paging.carryOut(request);
 		Proxy pagePxy = new PageProxy();
 		pagePxy.carryOut(paging);
+		List<?> list = new ArrayList<>();
+		
 		switch (Action.valueOf(request.getParameter("cmd").toUpperCase())) {
 		case CUSTOMER_LIST:
-			List<CustomerDTO> list = CustomerServiceImpl.getInstance().bringCustomerList(pagePxy);
+			list = CustomerServiceImpl.getInstance().bringCustomerList(pagePxy);
 				request.setAttribute("list",list);
 				request.setAttribute("pagination",paging);
 			break;
 		case PRO_LIST:
-			List<ProductDTO> pro_list = ProductServiceImpl.getInstance().bringProductList(pagePxy);
-			request.setAttribute("list",pro_list);
+			list = ProductServiceImpl.getInstance().bringProductList(pagePxy);
+			request.setAttribute("list",list);
 			request.setAttribute("pagination", paging);
+			break;
+		case CATE_LIST:
+			 list = CategoryServiceImpl.getInstance().bringCategoryList(pagePxy);
+			 request.setAttribute("list",list);
 			break;
 		default:
 			break;

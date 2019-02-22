@@ -57,8 +57,8 @@ public class ImageServiceImpl implements ImageService {
 	}
 
 	@Override
-	public ImageDTO searchImageSeq(CustomerDTO cust) {
-		return dao.selectImageSeq(cust);
+	public ImageDTO searchImageSeq(ImageDTO img) {
+		return dao.selectImageSeq(img);
 	}
 
 }

@@ -7,7 +7,7 @@
 <h1>상품 수정</h1>
 </div>
 <div class="grid-item" id="side_menu">
- 	<img src="${img}/${image.imgName}.${image.imgExtention}"/>
+ 	<img id="product_img" src="${img}/${image.imgName}.${image.imgExtention}"/>
  	<input type="file" name="file_upload" id="file_upload"/>
  	<input type="submit" class="btn btn-success" id="file_upload_btn"/>
 </div>

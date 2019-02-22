@@ -8,7 +8,7 @@ import pooxy.Proxy;
 public interface ProductService {
 
 	public void registProduct(ProductDTO pro);
-	public List<ProductDTO> bringProductList(Proxy pxy);
+	public List<?> bringProductList(Proxy pxy);
 	public List<ProductDTO> retrieveProducts(Proxy pxy);
 	public ProductDTO retrieveProduct(ProductDTO pro);
 	

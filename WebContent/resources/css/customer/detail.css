@@ -16,6 +16,7 @@
     grid-column-start: 2;
     grid-column-end: 7;
     font-size: 15px;
+    
 }
 #footer{
     grid-column-start: 1;
@@ -62,9 +63,12 @@
     background-color: #ddd;
 }
 #detail_img{
-	width: 200px;
-	height: 200px;
+	width: 150px;
+	height: 150px;
 }
 #file_upload{
+	margin: 1px auto;
+}
+#detail_info{
 	margin: 1px auto;
 }

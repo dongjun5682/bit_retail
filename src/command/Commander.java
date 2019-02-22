@@ -58,6 +58,9 @@ public class Commander {
 		case PRODUCT_RETRIEVE:
 			cmd = new RetrieveCommand(pxy);
 			break;
+		case CATE_LIST:
+			cmd = new ListCommand(pxy);
+			break;
 		default:
 			break;
 		}

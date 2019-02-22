@@ -17,6 +17,7 @@
 	</form>
 </div>
 <div class="grid-item" id="content">
+<div id="detail_info">
 [${cus.customerName}의 정보] <br /> 
 아이디 : ${cus.customerId} <br />
 이 름  : ${cus.customerName} <br />
@@ -26,6 +27,7 @@
 우편번호 : ${cus.postalCode} <br />
 지번주소 : ${cus.city} <br />
 상세주소 : ${cus.address}<br />
+</div>
 </div>
 <div class="grid-item" id="modify">
 	<button type="button" class="btn btn-success" id="detail_modify">수정</button>

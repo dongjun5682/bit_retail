@@ -1,5 +1,6 @@
 package command;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -23,6 +24,7 @@ public class CreateCommand extends Command{
 		super(pxy);
 		RequestProxy req = (RequestProxy)pxy.get("req");
 		HttpServletRequest request = req.getRequest();
+		List<?> list = new ArrayList<>();
 		switch (Action.valueOf(request.getParameter("cmd").toUpperCase())) {
 		case REGISTER:
 			EmployeeDTO emp = new EmployeeDTO();
@@ -57,8 +59,8 @@ public class CreateCommand extends Command{
 			paging.carryOut(request);
 			Proxy pagePxy = new PageProxy();
 			pagePxy.carryOut(paging);
-			List<ProductDTO> pro_list = ProductServiceImpl.getInstance().bringProductList(pagePxy);
-			request.setAttribute("list",pro_list);
+			list = ProductServiceImpl.getInstance().bringProductList(pagePxy);
+			request.setAttribute("list",list);
 			request.setAttribute("pagination", paging);
 			break;
 		default:

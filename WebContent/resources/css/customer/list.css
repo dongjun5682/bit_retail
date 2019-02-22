@@ -16,6 +16,7 @@
     grid-column-start: 2;
     grid-column-end: 7;
     font-size: 15px;
+    
 }
 #footer{
     grid-column-start: 1;
@@ -65,4 +66,7 @@
 }
 .pagination a:hover:not(.active) {
     background-color: #ddd;
+}
+tbody{
+	text-align: center;
 }

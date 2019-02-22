@@ -2,8 +2,12 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <jsp:include page="../home/top.jsp" />
+<link rel="stylesheet" href="${css}/customer/list.css" />
 <link rel="stylesheet" href="${css}/product/product.css" />
-<div id="cust_nav">
+<div class="grid-item" id="nav">
+	<jsp:include page="../employee/nav.jsp"/>
+</div>
+<div id="pro_nav">
 	<form class="navbar-form navbar-left" role="search">
 		<div class="form-group">
 			<input type="text" class="form-control" placeholder="Search">
@@ -13,6 +17,10 @@
 	<ul class="nav navbar-nav navbar-right">
 		<li><a href="${ctx}/product.do?cmd=move&page=product_register">상품등록</a></li>
 	</ul>
+</div>
+<div class="grid-item" id="side_menu">
+ 	<h1><font style="font-size: 25px">상품 목록</font>
+ 	</h1>
 </div>
 <div class="grid-item" id="content">
 	<table class="table table-hover">
@@ -77,4 +85,5 @@ $('.btn btn-success').click(function(){
 	alert('클릭클릭');
 	location.assign('${ctx}/product.do?cmd=product_retrieve&page=product_update&product_Id=${pro.productId}');
 });
+
 </script>
