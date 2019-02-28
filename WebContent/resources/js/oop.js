@@ -1,22 +1,54 @@
 function People(name,age,gender,job){
 	this.name = name;
 	this.age = age;
-	this.gneder = gender;
+	this.gender = gender;
 	this.job = job;
 }
-function Customer(name,age,gender,job,grade,custNo){
-	People.call(this);
+People.prototype.setName =name=>{this.name = name;};
+People.prototype.setAge =age=>{this.age = age;};
+People.prototype.setGender =gender=>{this.gender = gender;};
+People.prototype.setJob =job=>{this.job = job;};
+
+People.prototype.getName =()=>{return this.name;};
+People.prototype.getAge =()=>{return this.age;};
+People.prototype.getGender =()=>{return this.gender;};
+People.prototype.getJob =()=>{return this.job;};
+
+function Customer(grade,custNo){
+	People.apply(this,arguments);
 	this.grade = grade;
 	this.custNo = custNo;
 }
+Customer.prototype = new People();
+
+//오버라이딩
+Customer.prototype.setName =name=>{
+	//this.name ='[닉네임] '+name 이건 자바문법
+	Object.getPrototypeOf(Customer.prototype).setName('[닉네임] '+name);
+};
+
+Customer.prototype.setGrade = (grade)=>{this.grade = grade;};
+Customer.prototype.setCustNo = (custNo)=>{this.custNo = custNo;};
+
+Customer.prototype.getGrade = ()=>{return this.grade;};
+Customer.prototype.getCustNo = ()=>{return this.custNo;};
+
+
 var info = (()=>{
 	let main = ()=>{
-		let customer = new Customer('홍길동','25세','남','개발자','3급','123');
-		alert(customer.name);
+		let cust = new Customer();
+		cust.setName('홍길동');
+		cust.setAge('25세');
+		cust.setGender('남');
+		cust.setJob('개발자');
+		cust.setGrade('3급');
+		cust.setCustNo('123');
+		alert('고객 정보 '+'\n'+
+				cust.getName()+'\n'+cust.getAge()+'\n'+
+				cust.getGender()+'\n'+cust.getJob()+'\n'+
+				cust.getGrade()+'\n'+cust.getCustNo());
 	}
-	return {
-		main : main
-	};
+	return {main : main};
 })();
 
 

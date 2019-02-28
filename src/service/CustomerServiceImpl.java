@@ -1,27 +1,24 @@
 package service;
 
 import java.util.List;
+
 import java.util.Map;
 
 import dao.CustomerDAO;
 import dao.CustomerDAOImpl;
 import domain.CustomerDTO;
-import pooxy.PageProxy;
 import pooxy.Proxy;
 
 public class CustomerServiceImpl implements CustomerService {
 
 	private static CustomerServiceImpl instance = new CustomerServiceImpl();
+	CustomerDAO dao;
 	public CustomerServiceImpl() {
 		dao = CustomerDAOImpl.getInstance();
 	}
-	
 	public static CustomerServiceImpl getInstance() {
 		return instance;
 	}
-	
-	CustomerDAO dao;
-	
 	
 	@Override
 	public void registCustomer(CustomerDTO cus) {
